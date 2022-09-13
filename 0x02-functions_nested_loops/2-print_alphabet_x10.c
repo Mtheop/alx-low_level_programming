@@ -3,7 +3,7 @@
 /**
  * print_alphabet -> prints lowercase alphabets 10 times
  */
-void print_alphabet_x10(void)
+void print_alphabet(void)
 {
 	int j;
 	int x;
