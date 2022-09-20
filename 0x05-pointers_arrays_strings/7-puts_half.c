@@ -16,3 +16,20 @@ void puts_half(char *str)
 		putchar(*(str + i));
 	putchar(10);
 }
+
+/**
+ * _strlen - returns the lenght of the string
+ * @s: string
+ *
+ * Return: lenght of string
+ */
+
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*(s + len) != '\0')
+		len++;
+
+	return (len);
+}
