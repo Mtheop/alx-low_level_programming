@@ -19,6 +19,7 @@ int is_prime_number(int n)
 /**
  * is_prime - returns the i if n is prime
  * @n: number to start checking from
+ * @start: number to start checking
  *
  * Return: i if n is prime, 0 if not
  */
