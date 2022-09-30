@@ -4,7 +4,7 @@
 #include <string.h>
 
 /**
- * check_num - check -string if they are digit
+ * check_num - check - string if they are digit
  * @str: array string
  *
  * Return: 0
@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
 {
 	int count;
 	int str_to_int;
-
 	int sum = 0;
+
 	count = 1;
 
 	while (count < argc)
@@ -61,5 +61,6 @@ int main(int argc, char *argv[])
 
 		return (0);
 	}
+	count++;
 }
 
