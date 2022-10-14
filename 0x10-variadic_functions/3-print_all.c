@@ -3,50 +3,95 @@
 #include <stdio.h>
 
 /**
- * print_all - prints anything
- * @format: a list of types of arguments passed to the function
+ * print_c - print char
+ * @c: char to print
  *
- * Return: 0
+ * Return: void
+ */
+
+void print_c(va_list c)
+{
+	printf("%c", va_arg(c, int));
+}
+
+/**
+ * print_s - prints string
+ * @s: string to print
+ *
+ * Return: void
+ */
+
+void print_s(va_list s)
+{
+	char *str = va_arg(s, char*);
+
+	if (str == NULL)
+		str = "(nil)";
+	printf("%s", str);
+}
+
+/**
+ * print_i - prints int
+ * @i: int to print
+ *
+ * Return: void
+ */
+
+void print_i(va_list i)
+{
+	printf("%d", va_arg(i, int));
+}
+
+/**
+ * print_f - prints float
+ * @f: float to print
+ *
+ * Return: void
+ */
+
+void print_f(va_list f)
+{
+	printf("%f", va_arg(f, double));
+}
+
+/**
+ * print_all - print all
+ * @format: list of arguments types passed to the fucntion
+ *
+ * Return: void
  */
 
 void print_all(const char * const format, ...)
 {
+	unsigned int i, j;
+	print_t p[] = {
+		{"c", print_c},
+		{"s", print_s},
+		{"i", print_i},
+		{"f", print_f},
+		{NULL, NULL}
+	};
 	va_list valist;
-	unsigned int i = 0, j, c = 0;
-	char *str;
-	const char t_arg[] = "cifs";
+	char *separator = "";
 
 	va_start(valist, format);
+	i = 0;
 	while (format && format[i])
 	{
 		j = 0;
-		while (t_arg[j])
+		while (p[j].t != NULL)
 		{
-			if (format[i] == t_arg[j] && c)
+			if (*(p[j].t) == format[i])
 			{
-				printf(", ");
-				break;
-			} j++;
-		}
-		switch (format[i])
-		{
-			case 'c':
-			printf("%c", va_arg(valist, int)), c = 1;
-			break;
-			case 'i':
-			printf("%d", va_arg(valist, int)), c - 1;
-			case 'f':
-			printf("%f", va_arg(valist, double)), c = 1;
-			case 's':
-			str = va_arg(valist, char *), c = 1;
-			if (!str)
-			{
-				printf("(nil)");
+				printf("%s", separator);
+				p[j].f(valist);
+				separator = ",";
 				break;
 			}
-			printf("%s", str);
-			break;
-		} i++;
+			j++;
+		}
+		i++;
 	}
-	printf("\n"), va_end(valist);
+	va_end(valist);
+	printf("\n");
 }
