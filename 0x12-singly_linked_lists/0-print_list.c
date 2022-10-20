@@ -3,7 +3,7 @@
 
 /**
  * print_list - prints all the elements of a string
- * @h: the list
+ * @h: the list_t list
  *
  * Return: the number of modes in h
  */
