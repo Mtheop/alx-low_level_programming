@@ -7,7 +7,7 @@
   * @argc: The argument count
   * @argv: The argument vector
   *
-  * Return: ...
+  * Return: 0
   */
 int main(int argc, char **argv)
 {
@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 	}
 
 	copy_file(argv[1], argv[2]);
+
 	exit(0);
 }
 
@@ -26,7 +27,7 @@ int main(int argc, char **argv)
   * @src: soure to copy from
   * @dest: destination to copy to
   *
-  * Return: copy
+  * Return: 0
   */
 void copy_file(const char *src, const char *dest)
 {
